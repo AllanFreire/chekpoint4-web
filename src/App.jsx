@@ -1,7 +1,14 @@
-import React from 'react'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-export const App = () => {
+const App = () => {
   return (
-    <div>App</div>
+    <div className="pagina" id="inicio">
+      <Header />
+
+      <Footer />
+    </div>
   )
 }
+
+export default App
