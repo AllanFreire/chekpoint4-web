@@ -8,7 +8,7 @@ return (
         <nav className="navegacao">
             <ul>
             <li><a href="#perfil">Perfil</a></li>
-            <li><a className="navegacao__carrinho" >Carrinho</a></li>
+            <li><a className="navegacao__carrinho" >🛒</a></li>
             </ul>
         </nav>
         </header>
