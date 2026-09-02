@@ -1,30 +1,22 @@
 import produtos from "../data/produtos.json";
 
-function Produtos() {
-  const adicionarAoCarrinho = (produto) => {
-    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+function Produtos({adicionarAoCarrinho}) {
+    return(
+        <section>
+            <h2>Produtos</h2>
 
-    carrinho.push(produto);
+            {produtos.map((produto) => (
+                <div key={produto.id}>
+                    <h3>{produto.nome}</h3>
+                    <p>R$ {produto.preco}</p>
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  };
-
-  return (
-    <section>
-      <h2>Produtos</h2>
-
-      {produtos.map((produto) => (
-        <div key={produto.id}>
-          <h3>{produto.nome}</h3>
-          <p>R$ {produto.preco}</p>
-
-          <button onClick={() => adicionarAoCarrinho(produto)}>
-            Adicionar ao Carrinho
-          </button>
-        </div>
-      ))}
-    </section>
-  );
+                    <button onClick={() => adicionarAoCarrinho(produto)}>
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            ))}
+        </section>
+    );
 }
 
 export default Produtos;

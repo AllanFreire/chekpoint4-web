@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({quantidadeItens, aoClicarCarrinho}) => {
 return (
         <header className="cabecalho">
         <a className="marca" href="#inicio">
@@ -8,7 +8,11 @@ return (
         <nav className="navegacao">
             <ul>
             <li><a href="#perfil">Perfil</a></li>
-            <li><a className="navegacao__carrinho" >🛒</a></li>
+            <li>
+                <button className="navegacao__carrinho" onClick={aoClicarCarrinho}>
+                    🛒 {quantidadeItens > 0 && <span className="carrinho__contador">{quantidadeItens}</span>}
+                </button>
+            </li>
             </ul>
         </nav>
         </header>
