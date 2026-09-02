@@ -51,3 +51,5 @@ return (
         </div>
     </section>
     );}
+
+export default Produtos;  
