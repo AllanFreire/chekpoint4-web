@@ -1,7 +1,7 @@
-import { useState } from "react";
-import {finalizarCompra} from "../services/checkout";
+import { forwardRef, useState } from "react";
+import { finalizarCompra } from "../services/checkout";
 
-function Carrinho({carrinho, aberto, fechar}) {
+const Carrinho = forwardRef(({ carrinho, aberto, fechar }, ref) => {
   const [carregando, setCarregando] = useState(false);
   const [mensagem, setMensagem] = useState(null);
 
@@ -9,21 +9,20 @@ function Carrinho({carrinho, aberto, fechar}) {
     setMensagem(null);
     setCarregando(true);
 
-    try{
+    try {
       const resultado = await finalizarCompra(carrinho);
       setMensagem({
         tipo: "sucesso",
         texto: `Pedido #${resultado.numeroPedido} confirmado! Total: R$ ${resultado.total.toFixed(2)}`
       });
-    }catch (erro) {
-      setMensagem({tipo: "erro", texto: erro.message});
-    }finally{
+    } catch (erro) {
+      setMensagem({ tipo: "erro", texto: erro.message });
+    } finally {
       setCarregando(false);
     }
   };
 
-
- return (
+  return (
     <>
       {aberto && <div className="carrinho__overlay" onClick={fechar}></div>}
 
@@ -33,17 +32,10 @@ function Carrinho({carrinho, aberto, fechar}) {
           <button onClick={fechar} aria-label="Fechar carrinho">✕</button>
         </div>
 
-        {carrinho.length === 0 ? (
-          <p>Nenhum produto no carrinho.</p>
-        ) : (
-          <ul>
-            {carrinho.map((item, indice) => (
-              <li key={`${item.id}-${indice}`}>
-                {item.nome} - R$ {item.preco}
-              </li>
-            ))}
-          </ul>
-        )}
+        {carrinho.length === 0 && <p>Nenhum produto no carrinho.</p>}
+
+        {/* container vazio de propósito — DOM puro escreve aqui, nunca o React */}
+        <ul ref={ref}></ul>
 
         <button onClick={handleFinalizarCompra} disabled={carregando || carrinho.length === 0}>
           {carregando ? "Processando..." : "Finalizar Compra"}
@@ -59,6 +51,6 @@ function Carrinho({carrinho, aberto, fechar}) {
       </aside>
     </>
   );
-}
+});
 
 export default Carrinho;

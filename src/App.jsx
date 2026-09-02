@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from './components/Header'
 import Produtos from './components/Produtos'
 import Carrinho from './components/Carrinho'
 import Footer from './components/Footer'
+import { adicionarProdutoAoCarrinho } from './services/carrinho'
 
 const App = () => {
   const [carrinho, setCarrinho] = useState(() => {
     return JSON.parse(localStorage.getItem("carrinho")) || [];
   });
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
+  const carrinhoRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }, [carrinho]);
 
   const adicionarAoCarrinho = (produto) => {
-    setCarrinho((atual) => [...atual, produto]);
+    adicionarProdutoAoCarrinho(carrinhoRef.current, produto); // DOM puro: cria o card visual
+    setCarrinho((atual) => [...atual, produto]); // state: mantém badge e localStorage vivos
   };
 
   return (
@@ -26,6 +29,7 @@ const App = () => {
       />
       <Produtos adicionarAoCarrinho={adicionarAoCarrinho} />
       <Carrinho
+        ref={carrinhoRef}
         carrinho={carrinho}
         aberto={carrinhoAberto}
         fechar={() => setCarrinhoAberto(false)}

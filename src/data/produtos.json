@@ -2,26 +2,31 @@
   {
     "id": 1,
     "nome": "Garrafa Sustentável",
-    "preco": 49.90
+    "preco": 49.90,
+    "categoria": "objetos"
   },
   {
     "id": 2,
     "nome": "Sacola Ecológica",
-    "preco": 19.90
+    "preco": 19.90,
+    "categoria": "objetos"
   },
   {
     "id": 3,
     "nome": "Canudo Reutilizável",
-    "preco": 9.90
+    "preco": 9.90,
+    "categoria":"objetos"
   },
   {
   "id": 4,
   "nome": "Óculos de Bambu",
-  "preco": 99.90
+  "preco": 99.90,
+  "categoria": "roupas"
   },
   {
   "id": 5,
   "nome": "Camiseta de Algodão Orgânico",
-  "preco": 89.90
+  "preco": 89.90,
+  "categoria": "roupas"
   }
 ]
