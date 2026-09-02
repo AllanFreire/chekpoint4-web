@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "nome": "Garrafa Sustentável",
+    "preco": 49.90
+  },
+  {
+    "id": 2,
+    "nome": "Sacola Ecológica",
+    "preco": 19.90
+  },
+  {
+    "id": 3,
+    "nome": "Canudo Reutilizável",
+    "preco": 9.90
+  }
+]
