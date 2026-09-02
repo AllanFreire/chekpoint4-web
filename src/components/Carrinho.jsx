@@ -1,41 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Carrinho() {
-  const [carrinho, setCarrinho] = useState(() => {
-    const carrinhoSalvo = localStorage.getItem("carrinho");
-    return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+  const [carrinho] = useState(() => {
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
   });
 
-  useEffect(() => {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  }, [carrinho]);
-
-  const adicionarAoCarrinho = (produto) => {
-    setCarrinho([...carrinho, produto]);
-  };
-
   return (
-    <div>
-      <button
-        onClick={() =>
-          adicionarAoCarrinho({
-            id: 1,
-            nome: "Notebook",
-            preco: 3500,
-          })
-        }
-      >
-        Adicionar
-      </button>
+    <section>
+      <h2>Carrinho</h2>
 
-      <ul>
-        {carrinho.map((item, index) => (
-          <li key={index}>
-            {item.nome} - R$ {item.preco}
-          </li>
-        ))}
-      </ul>
-    </div>
+      {carrinho.length === 0 ? (
+        <p>Nenhum produto no carrinho.</p>
+      ) : (
+        <ul>
+          {carrinho.map((item) => (
+            <li key={item.id}>
+              {item.nome} - R$ {item.preco}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 

@@ -1,16 +1,15 @@
 import Header from './components/Header'
-import Footer from './components/Footer'
-import Carrinho from './components/Carrinho'
 import Produtos from './components/Produtos'
-
+import Carrinho from './components/Carrinho'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
     <div className="pagina" id="inicio">
       <Header />
+      <Produtos/>
       <Carrinho/>
       <Footer />
-      <Produtos/>
     </div>
   )
 }
