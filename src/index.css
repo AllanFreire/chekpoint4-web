@@ -3,6 +3,7 @@
 :root {
     --verde-principal: #087c5b;
     --verde-escuro: #064e3b;
+    --verdeBtn: #159e7a;
     --verde-claro: #ecfdf5;
     --branco: #ffffff;
     --fonte-texto: 'Manrope', sans-serif;
@@ -112,6 +113,69 @@ a:focus-visible {
     outline-offset: 3px;
 }
 
+
+#sessao-produtos {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#titulo-produtos {
+    color: #0f766e;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.flex-produtos {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-produto {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(15, 118, 110, 0.18);
+}
+
+.card-produto h3 {
+    color: #134e4a;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.card-produto .preco {
+    color: #059669;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.btn-adicionar {
+    margin-top: auto;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-adicionar:hover {
+    background: #059669;
+}
 
 /* Footer */
 
