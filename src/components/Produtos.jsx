@@ -1,10 +1,17 @@
-import { useRef, useState } from "react";
-import produtos from "../data/produtos.json";
+import { useRef, useState, useEffect } from "react";
+import { buscarProdutos } from "../services/produtosApi";
 import { filtrarProdutos } from "../services/carrinho";
 
 function Produtos({ adicionarAoCarrinho }) {
     const listaRef = useRef(null);
     const [filtroAtivo, setFiltroAtivo] = useState("todas");
+     const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        buscarProdutos()
+            .then(setProdutos)
+            .catch((err) => console.error("Erro ao carregar produtos:", err));
+    }, []);
 
 function aplicarFiltro(categoria) {
     filtrarProdutos(listaRef.current, categoria);
